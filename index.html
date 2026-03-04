@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 2026 Glassmorphism Style */
+        body { 
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); 
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            color: white; font-family: 'Poppins', sans-serif; overflow: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px; border-radius: 30px; width: 85%;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+        h1 { font-size: 22px; color: #00f2fe; text-shadow: 0 0 10px #00f2fe; }
+        .input-group { margin: 20px 0; }
+        input { 
+            background: rgba(255, 255, 255, 0.1); border: none; 
+            padding: 12px; border-radius: 10px; color: white; width: 90%;
+            text-align: center; margin-bottom: 10px; border-bottom: 2px solid #00f2fe;
+        }
+        .result-box {
+            background: rgba(0, 242, 254, 0.1); border-radius: 15px;
+            padding: 15px; margin-top: 15px; display: none;
+        }
+        .btn-glow {
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+            border: none; padding: 15px 30px; border-radius: 50px;
+            color: black; font-weight: bold; width: 100%; cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+        /* Vibration Animation */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -1px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body id="mainBody">
+
+    <div class="glass-panel" id="panel">
+        <h1>SANTOSH HUB</h1>
+        <p style="font-size: 12px;">The King of Pro Settings</p>
+
+        <div class="input-group">
+            <input type="text" id="phoneModel" placeholder="Phone Name (e.g. Redmi Note 13)">
+            <input type="number" id="ram" placeholder="RAM size (e.g. 4)">
+        </div>
+
+        <button class="btn-glow" onclick="activate()">ACTIVATE ANTI-LAG</button>
+
+        <div class="result-box" id="result">
+            <h3 style="margin: 0; color: #00f2fe;">OPTIMIZED!</h3>
+            <p id="outputText"></p>
+        </div>
+        
+        <p style="margin-top: 20px; font-size: 10px; color: #888;">I am safal adhikari from kalika-4 chitwan❤️</p>
+    </div>
+
+    <script>
+        function activate() {
+            let phone = document.getElementById('phoneModel').value;
+            let ram = document.getElementById('ram').value;
+            let panel = document.getElementById('panel');
+            let result = document.getElementById('result');
+            let output = document.getElementById('outputText');
+
+            if(phone == "" || ram == "") {
+                alert("Enter phone details, King!");
+                return;
+            }
+
+            // Make screen shake
+            panel.style.animation = "shake 0.5s";
+            
+            setTimeout(() => {
+                panel.style.animation = "";
+                result.style.display = "block";
+                
+                // Real Logic: High RAM needs lower sensitivity than Low RAM
+                let sens = (ram < 4) ? 100 : 92;
+                output.innerHTML = "<b>Settings for " + phone + ":</b><br>Sens: " + sens + " | DPI: " + (ram * 100);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
